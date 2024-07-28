@@ -1,0 +1,33 @@
+package char_io;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class BufferedFileCopy {
+
+	public static void main(String[] args) {
+	  try(Scanner sc = new Scanner(System.in)){
+		  System.out.println("Enter the source file name");
+		  //Java<---BufferReader<----File (chain of io streams)
+		  BufferedReader br = new BufferedReader(new FileReader(sc.nextLine()));//src
+		  //Java--->BufferedReader--->File
+		  System.out.println("Enter the destination file name");
+		  PrintWriter pw = new PrintWriter(new FileWriter(sc.nextLine()));//dest
+		  //now copy data from src to dest
+		  String line = null;
+		  while((line=br.readLine())!=null) {
+			  pw.println(line);
+		  }
+		  pw.close();//if the data is not copied from src file then it's not closed the printWriter
+		  System.out.println("copy done!");
+	  }catch (Exception e) {
+		e.printStackTrace();
+	}
+	  System.out.println("main over...");
+
+	}
+
+}
