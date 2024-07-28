@@ -1,0 +1,1 @@
+Product [id=12, name=sunflower, productCategory=OIL, manufactureDate=2024-12-12, price=400.0]
